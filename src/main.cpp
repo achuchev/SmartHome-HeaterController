@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include <CommonConfig.h>
 #include <MqttClient.h>
 #include <FotaClient.h>
 #include <ESPWifiClient.h>
@@ -205,19 +204,13 @@ void setup() {
 
 void setHeaterTempIfNeeded() {
   if (heaterTemp != heaterTempTarget) {
-    // PRINT("HEATER: Set temperature to ");
-    // PRINTLN(heaterTempTarget);
     int degreesDelta = heaterTemp - heaterTempTarget;
 
-    // PRINTLN(degreesDelta);
     if (degreesDelta > 0) {
       heaterButtonClick(PIN_TEMP_DOWN);
     } else {
       heaterButtonClick(PIN_TEMP_UP);
     }
-
-    // PRINT("HEATER: Temp is: ");
-    // PRINTLN(heaterTemp);
   }
 }
 
